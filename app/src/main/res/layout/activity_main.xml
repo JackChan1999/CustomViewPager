@@ -11,7 +11,7 @@
         android:layout_height="wrap_content" >
     </RadioGroup>
 
-    <com.itheima.myviewpager66.MyViewPager
+    <com.itheima.myviewpager66.view.MyViewPager
         android:id="@+id/mypager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -8,7 +8,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
-import com.itheima.myviewpager66.MyViewPager.OnPageChangeListener;
+import com.itheima.myviewpager66.view.MyViewPager;
+import com.itheima.myviewpager66.view.MyViewPager.OnPageChangeListener;
 /**
  * ============================================================
  * Copyright：${TODO}有限公司版权所有 (c) 2017

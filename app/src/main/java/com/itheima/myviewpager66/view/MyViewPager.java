@@ -1,4 +1,4 @@
-package com.itheima.myviewpager66;
+package com.itheima.myviewpager66.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
