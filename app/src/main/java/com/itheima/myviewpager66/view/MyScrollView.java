@@ -167,8 +167,7 @@ public class MyScrollView extends ViewGroup {
 		for (int i = 0; i < getChildCount(); i++) {
 			View child = getChildAt(i);
 			// 指定孩子的位置和大小
-			child.layout(i * getWidth(), 0, getWidth() + i * getWidth(),
-					getHeight());
+			child.layout(i * getWidth(), 0, getWidth() + i * getWidth(), getHeight());
 		}
 
 	}

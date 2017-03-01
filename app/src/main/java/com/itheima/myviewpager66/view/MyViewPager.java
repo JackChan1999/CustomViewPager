@@ -10,7 +10,7 @@ import android.widget.Scroller;
 /**
  * ============================================================
  * Copyright：${TODO}有限公司版权所有 (c) 2017
- * Author：   陈冠杰
+ * Author：   AllenIverson
  * Email：    815712739@qq.com
  * GitHub：   https://github.com/JackChen1999
  * 博客：     http://blog.csdn.net/axi295309066
@@ -19,18 +19,14 @@ import android.widget.Scroller;
  * Project_Name：MyViewPager66
  * Package_Name：com.itheima.myviewpager66
  * Version：1.0
- * time：2017/2/15 16:51
- * des ：${TODO}
+ * time：2016/2/15 16:51
  * gitVersion：$Rev$
  * updateAuthor：$Author$
  * updateDate：$Date$
  * updateDes：${TODO}
- * ============================================================
- **/
-
-/**
+ *
  * 自定义ViewPager
- * 
+ *
  * 1. 写一个类继承ViewGroup
  * 2. 重写onLayout方法, 保证孩子正常显示(一字排开)
  * 3. 重写onTouchEvent, 手势识别器(onScroll),scrollby
@@ -42,9 +38,10 @@ import android.widget.Scroller;
  * 9. 增加测试页面(ScrollView)
  * 11. 重写onMeasure,测量每个孩子
  * 12. 重写onInterceptTouchEvent, 在适当时机(水平滑动),中断事件传递
- * @author Kevin
- * @date 2015-8-8
- */
+ * ============================================================
+ **/
+
+
 public class MyViewPager extends ViewGroup {
 
 	// 手势识别器
@@ -97,10 +94,10 @@ public class MyViewPager extends ViewGroup {
 
 		System.out.println("widthMeasureSpec:" + widthMeasureSpec);
 		System.out.println("heightMeasureSpec:" + heightMeasureSpec);
-		
+
 		int size = MeasureSpec.getSize(widthMeasureSpec);
 		System.out.println("width:" + size);
-		
+
 		int mode = MeasureSpec.getMode(widthMeasureSpec);
 		//MeasureSpec.AT_MOST; //wrap_content
 		//MeasureSpec.EXACTLY; //确定值 , 宽高写死, 100dp/ match_parent
@@ -114,8 +111,7 @@ public class MyViewPager extends ViewGroup {
 		// 手动设置孩子们的位置, 保证一字排开
 		int childCount = getChildCount();
 		for (int i = 0; i < childCount; i++) {
-			getChildAt(i).layout(0 + i * getWidth(), 0, (i + 1) * getWidth(),
-					getHeight());
+			getChildAt(i).layout(i * getWidth(), 0, (i + 1) * getWidth(), getHeight());
 		}
 	}
 
@@ -186,15 +182,17 @@ public class MyViewPager extends ViewGroup {
 	/**
 	 * 切换到某个具体的页面
 	 * 
-	 * @param position
+	 * @param pos
 	 */
 	public void setCurrentItem(int pos) {
 		// 平滑的移动到某个位置
 		int distance = pos * getWidth() - getScrollX();// 目标位置减去当前位置,获得要滑动的距离
 		// 开始滑动, 滑动时间等于距离绝对值,
 		// 保证距离越长,时间越久(此方法不会产生滑动,而是会导致不断回调computeScroll,需要在这个方法中处理滑动逻辑)
-		mScroller.startScroll(getScrollX(), 0, distance, 0, Math.abs(distance));// 参1:开始x,
-																				// 参2:开始y;参3:x偏移,参4:y偏移;参5:滑动时间
+
+		// 参1:开始x, 参2:开始y; 参3:x偏移, 参4:y偏移; 参5:滑动时间
+		mScroller.startScroll(getScrollX(), 0, distance, 0, Math.abs(distance));
+
 		invalidate();// 刷新界面,保证滑动器正常运行
 
 		// 页面切换的回调
